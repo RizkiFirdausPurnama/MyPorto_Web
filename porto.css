@@ -1,0 +1,485 @@
+/* ======== GLOBAL STYLING ======== */
+:root {
+    --bg-dark: #101010;
+    --bg-dark-secondary: #181818;
+    --bg-dark-tertiary: #2a2a2a;
+    --text-light: #f0f0f0;
+    --text-secondary: #a0a0a0;
+    --color-purple: #9b59b6; /* Warna ungu dari desain */
+    --color-purple-darker: #8e44ad;
+    --color-purple-faded: rgba(155, 89, 182, 0.1);
+    --color-green: #27ae60; /* Warna hijau dari "Project" */
+    --color-teal: #00dfc4;  /* Warna teal untuk tombol */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+section {
+    padding: 80px 0;
+    overflow-x: hidden; /* Mencegah scroll horizontal saat animasi */
+}
+
+.text-purple {
+    color: var(--color-purple);
+}
+
+
+/* ======== NAVBAR ======== */
+.navbar {
+    background-color: rgba(16, 16, 16, 0.85); /* Warna bg-dark dengan transparansi */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #222;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-light) !important;
+}
+
+.nav-link {
+    color: var(--text-light) !important;
+    font-weight: 500;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-purple) !important;
+}
+
+.btn-contact {
+    background-color: var(--color-purple);
+    border: 1px solid var(--color-purple);
+    color: var(--text-light) !important;
+    border-radius: 8px;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-contact:hover {
+    background-color: var(--color-purple-darker);
+    border-color: var(--color-purple-darker);
+}
+
+/* ======== PAGE 1: HOME/PERKENALAN ======== */
+#home {
+    min-height: 100vh;
+    padding-top: 100px; /* Offset untuk fixed navbar */
+}
+
+#home .sub-heading {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+#home h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+#home .sub-role {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+#home #about {
+    max-width: 500px;
+}
+
+.btn-cv {
+    background-color: var(--color-purple);
+    color: var(--text-light);
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cv:hover {
+    background-color: var(--color-purple-darker);
+    color: var(--text-light);
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.social-links span {
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.social-links a {
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--color-purple);
+}
+
+/* Efek ketik */
+#typing-effect::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Gambar Hero */
+.hero-image-wrapper {
+    position: relative;
+    width: 75%;
+    padding-bottom: 75%; 
+    max-width: 450px;
+    max-height: 450px;
+    height: 0;
+    margin-top: 0;
+}
+
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.hero-image-wrapper::before {
+    content: none;
+}
+
+
+/* ======== PAGE 2: LATEST PROJECT ======== */
+#project {
+    background-color: var(--bg-dark);
+}
+
+.project-card {
+    background-color: var(--bg-dark-secondary);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.project-info {
+    padding: 25px;
+}
+
+.project-info .project-category {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.project-info h3 {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin-top: 5px;
+}
+
+/* Styling untuk Tags dan Tombol Project */
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0; /* Jarak antara deskripsi dan tombol */
+}
+
+.tag-pill {
+    background-color: var(--bg-dark-tertiary);
+    color: var(--text-light);
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* REVISI: Tombol See Project */
+.btn-see-project {
+    background-color: var(--color-purple);
+    color: var(--bg-dark); /* Teks gelap */
+    padding: 10px 35px; /* Dibuat sedikit lebih tipis */
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: 2px solid var(--color-purple); /* Tambahkan border agar tidak 'jump' saat hover */
+}
+
+/* REVISI: Efek Hover Tombol See Project */
+.btn-see-project:hover {
+    background-color: transparent; /* Background jadi transparan */
+    color: var(--color-purple); /* Teks jadi warna teal (terang) */
+    box-shadow: 0 5px 15px var(--color-purple);
+}
+
+
+/* ======== PAGE 3: WHY HIRE ME ======== */
+.hire-item {
+    padding: 20px;
+}
+
+.icon-circle {
+    width: 90px;
+    height: 90px;
+    background-color: var(--color-purple-faded);
+    border: 2px solid var(--color-purple);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px auto;
+    transition: all 0.3s ease;
+}
+
+.icon-circle i {
+    font-size: 2.5rem;
+    color: var(--color-purple);
+}
+
+.hire-item h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+/* ======== PAGE 4: TOOLS & SKILLS ======== */
+#skills {
+    background-color: var(--bg-dark);
+}
+
+.skill-icons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.skill-icon {
+    background-color: var(--bg-dark-tertiary);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px #0a0a0a,
+                -5px -5px 10px #2a2a2a;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-icon i {
+    font-size: 3rem;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+/* Styling untuk C++ */
+.plus-plus {
+    font-size: 2.2rem; /* Sedikit lebih kecil dari ikon */
+    font-weight: 700;
+    color: var(--text-light);
+    margin-left: -4px; /* Menempel dengan huruf 'C' */
+    line-height: 1;
+    transition: color 0.3s ease;
+}
+
+/* Efek Hover yang diminta */
+.skill-icon:hover {
+    background-color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.skill-icon:hover i {
+    color: var(--bg-dark); /* Warna ikon berubah jadi gelap */
+}
+
+/* Efek hover untuk C++ */
+.skill-icon:hover .plus-plus {
+    color: var(--bg-dark);
+}
+
+
+/* ======== PAGE 5: GET IN TOUCH ======== */
+#contact {
+    background-color: var(--bg-dark-secondary);
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--color-purple);
+    margin-right: 20px;
+    width: 30px;
+    text-align: center;
+}
+
+/* ======== FOOTER ======== */
+footer {
+    background-color: var(--bg-dark);
+    border-top: 1px solid #222;
+}
+
+footer p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ======== ANIMASI SCROLL ======== */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ======== RESPONSIVE (MOBILE) ======== */
+@media (max-width: 991.98px) {
+    /* Navbar collapse di tablet/hp */
+    .navbar-collapse {
+        background-color: var(--bg-dark-secondary);
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+    .nav-item {
+        margin-bottom: 10px;
+    }
+    .btn-contact {
+        width: 100%;
+        text-align: center;
+    }
+
+    #home .col-lg-6 {
+        text-align: center;
+    }
+
+    .hero-image-wrapper {
+        width: 50vw; 
+        padding-bottom: 50vw;
+        max-width: 50vw; 
+        max-height: 50vw;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 50px;
+    }
+
+    .social-links {
+        justify-content: center;
+        margin-top: 30px;
+    }
+}
+
+
+@media (max-width: 767.98px) {
+    h1 {
+        font-size: 2.5rem !important;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+
+    #home {
+        min-height: auto;
+        padding-top: 120px;
+        padding-bottom: 60px;
+    }
+
+    #home #about {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-image-wrapper {
+        width: 65vw; 
+        padding-bottom: 65vw;
+        max-width: 65vw;
+        max-height: 65vw;
+    }
+
+    .skill-icons-container {
+        justify-content: center;
+    }
+
+    .skill-icon {
+        width: 80px;
+        height: 80px;
+    }
+    .skill-icon i {
+        font-size: 2.5rem;
+    }
+
+    /* Penyesuaian C++ di mobile */
+    .plus-plus {
+        font-size: 1.8rem;
+    }
+
+    .contact-item {
+        font-size: 1rem;
+    }
+
+    #contact .col-lg-6 {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
