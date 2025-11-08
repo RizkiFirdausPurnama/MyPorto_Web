@@ -2,7 +2,7 @@
 
 Ini adalah website portofolio pribadi yang dibuat untuk memamerkan proyek, keahlian, dan latar belakang Rizki Firdaus Purnama sebagai seorang mahasiswa Computer Science di Binus University dengan fokus pada Front-End Development.
 
-**[Link Demo Langsung]([https://URL_HOSTING_ANDA](https://rizkifirdauspurnama.github.io/MyPorto_Web/))** 
+**[https://rizkifirdauspurnama.github.io/MyPorto_Web/]** 
 
 
 ## ✨ Fitur Utama
