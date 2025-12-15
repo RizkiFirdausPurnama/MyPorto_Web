@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const roleElement = document.querySelector('.sub-role');
     if (roleElement) {
-        const roles = ["Front-End Development", "Data Analytics"]; 
+        const roles = ["Web Development","Front-End Development", "Data Analytics"]; 
         let wordIndex = 0;
         let charIndex = 0;
         let isErasing = false;
