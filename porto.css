@@ -5,11 +5,11 @@
     --bg-dark-tertiary: #2a2a2a;
     --text-light: #f0f0f0;
     --text-secondary: #a0a0a0;
-    --color-purple: #9b59b6; /* Warna ungu dari desain */
+    --color-purple: #9b59b6; /* Warna ungu utama */
     --color-purple-darker: #8e44ad;
     --color-purple-faded: rgba(155, 89, 182, 0.1);
-    --color-green: #27ae60; /* Warna hijau dari "Project" */
-    --color-teal: #00dfc4;  /* Warna teal untuk tombol */
+    --color-green: #27ae60; 
+    --color-teal: #00dfc4;
 }
 
 body {
@@ -35,17 +35,16 @@ p {
 
 section {
     padding: 80px 0;
-    overflow-x: hidden; /* Mencegah scroll horizontal saat animasi */
+    overflow-x: hidden;
 }
 
 .text-purple {
     color: var(--color-purple);
 }
 
-
 /* ======== NAVBAR ======== */
 .navbar {
-    background-color: rgba(16, 16, 16, 0.85); /* Warna bg-dark dengan transparansi */
+    background-color: rgba(16, 16, 16, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid #222;
@@ -86,7 +85,7 @@ section {
 /* ======== PAGE 1: HOME/PERKENALAN ======== */
 #home {
     min-height: 100vh;
-    padding-top: 100px; /* Offset untuk fixed navbar */
+    padding-top: 100px;
 }
 
 #home .sub-heading {
@@ -182,7 +181,7 @@ section {
 }
 
 
-/* ======== PAGE 2: LATEST PROJECT ======== */
+/* ======== PAGE 2: LATEST PROJECT (UPDATED SLIDER) ======== */
 #project {
     background-color: var(--bg-dark);
 }
@@ -190,7 +189,7 @@ section {
 .project-card {
     background-color: var(--bg-dark-secondary);
     border-radius: 15px;
-    overflow: hidden;
+    overflow: hidden; /* Penting agar slider rounded di sudut */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -199,12 +198,102 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.project-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+/* --- Container Slider --- */
+.project-slider {
+    position: relative;
+    overflow: hidden;
+    /* Memberi background hitam agar ruang kosong tidak terlihat jelek */
+    background-color: #000; 
+    border-top-left-radius: 15px; 
+    border-top-right-radius: 15px;
+    /* Tambahan border tipis agar batas slider terlihat jelas */
+    border-bottom: 1px solid #333; 
 }
 
+/* --- Gambar Slider --- */
+.project-image {
+    width: 100%;
+    /* Tinggi tetap 400px agar tombol di bawahnya tidak naik-turun */
+    height: 400px; 
+    
+    /* INI KUNCINYA: ganti cover jadi contain */
+    object-fit: contain; 
+    
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+/* Efek Zoom halus (opsional, bisa dihapus jika tidak suka) */
+.project-card:hover .project-image {
+    transform: scale(1.02);
+}
+
+/* --- Tombol Navigasi Slider (Panah) --- */
+.carousel-control-prev, .carousel-control-next {
+    width: 60px;
+    opacity: 0; /* Sembunyikan saat normal */
+    transition: all 0.3s ease;
+}
+
+/* Munculkan tombol saat mouse masuk area slider */
+.project-slider:hover .carousel-control-prev,
+.project-slider:hover .carousel-control-next {
+    opacity: 1;
+}
+
+/* Styling Ikon Panah (Bulat & Modern) */
+.carousel-control-icon {
+    background-color: rgba(0, 0, 0, 0.5); /* Hitam transparan */
+    backdrop-filter: blur(4px);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.carousel-control-icon:hover {
+    background-color: var(--color-purple);
+    transform: scale(1.1);
+    border-color: var(--color-purple);
+}
+
+/* Sembunyikan icon bawaan Bootstrap */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    display: none; 
+}
+
+/* --- Indikator Slider (Titik-titik) --- */
+.carousel-indicators {
+    margin-bottom: 15px;
+}
+
+.carousel-indicators button {
+    width: 8px !important;
+    height: 8px !important;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5) !important;
+    border: none;
+    margin: 0 5px !important;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.carousel-indicators button.active {
+    background-color: var(--color-purple) !important;
+    width: 25px !important; /* Memanjang jadi pill saat aktif */
+    border-radius: 10px;
+    opacity: 1;
+}
+
+/* --- Info Project --- */
 .project-info {
     padding: 25px;
 }
@@ -220,12 +309,11 @@ section {
     margin-top: 5px;
 }
 
-/* Styling untuk Tags dan Tombol Project */
 .project-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 20px 0; /* Jarak antara deskripsi dan tombol */
+    margin: 20px 0;
 }
 
 .tag-pill {
@@ -237,25 +325,24 @@ section {
     font-weight: 500;
 }
 
-/* REVISI: Tombol See Project */
+/* Tombol See Project */
 .btn-see-project {
     background-color: var(--color-purple);
-    color: var(--bg-dark); /* Teks gelap */
-    padding: 10px 35px; /* Dibuat sedikit lebih tipis */
+    color: var(--bg-dark);
+    padding: 10px 35px;
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
     display: inline-block;
     transition: all 0.3s ease;
-    border: 2px solid var(--color-purple); /* Tambahkan border agar tidak 'jump' saat hover */
+    border: 2px solid var(--color-purple);
 }
 
-/* REVISI: Efek Hover Tombol See Project */
 .btn-see-project:hover {
-    background-color: transparent; /* Background jadi transparan */
-    color: var(--color-purple); /* Teks jadi warna teal (terang) */
-    box-shadow: 0 5px 15px var(--color-purple);
+    background-color: transparent;
+    color: var(--color-purple);
+    box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
 }
 
 
@@ -319,27 +406,24 @@ section {
     transition: color 0.3s ease;
 }
 
-/* Styling untuk C++ */
 .plus-plus {
-    font-size: 2.2rem; /* Sedikit lebih kecil dari ikon */
+    font-size: 2.2rem;
     font-weight: 700;
     color: var(--text-light);
-    margin-left: -4px; /* Menempel dengan huruf 'C' */
+    margin-left: -4px;
     line-height: 1;
     transition: color 0.3s ease;
 }
 
-/* Efek Hover yang diminta */
 .skill-icon:hover {
     background-color: #ffffff;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .skill-icon:hover i {
-    color: var(--bg-dark); /* Warna ikon berubah jadi gelap */
+    color: var(--bg-dark);
 }
 
-/* Efek hover untuk C++ */
 .skill-icon:hover .plus-plus {
     color: var(--bg-dark);
 }
@@ -395,7 +479,6 @@ footer p {
 
 /* ======== RESPONSIVE (MOBILE) ======== */
 @media (max-width: 991.98px) {
-    /* Navbar collapse di tablet/hp */
     .navbar-collapse {
         background-color: var(--bg-dark-secondary);
         padding: 20px;
@@ -450,6 +533,14 @@ footer p {
         margin-right: auto;
     }
 
+    /* Penyesuaian Slider di HP */
+    .project-image {
+        height: 250px; /* Lebih pendek di HP */
+    }
+    .carousel-control-prev, .carousel-control-next {
+        opacity: 1; /* Tombol selalu muncul di HP */
+    }
+
     .hero-image-wrapper {
         width: 65vw; 
         padding-bottom: 65vw;
@@ -469,7 +560,6 @@ footer p {
         font-size: 2.5rem;
     }
 
-    /* Penyesuaian C++ di mobile */
     .plus-plus {
         font-size: 1.8rem;
     }
